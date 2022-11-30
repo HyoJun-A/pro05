@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Test 화면</title>
+</head>
 <body>
-<div class="text-center">
-    <a th:href="@{/product}">
-        <img class="img-fluid" th:src="@{/static/images/img1.jpg}" art="제품 사진" >
-    </a>
-</div>
+  <h2 th:each="list=${sampleList}" th:text="list.id"></h2>
+  <h2></h2>
+
 </body>
 </html>
