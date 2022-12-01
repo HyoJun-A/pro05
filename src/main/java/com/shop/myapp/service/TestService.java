@@ -19,4 +19,10 @@ public class TestService {
         testRepository.findAll().forEach(e -> testList.add(e));
         return testList;
     }
+
+    public List<TestEntity> findByPw(String pw) {
+        List<TestEntity> findList = testRepository.findByPw(pw);
+        return findList;
+    }
+
 }

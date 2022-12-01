@@ -16,9 +16,18 @@ public class TestController {
     @Autowired
     TestService testService;
 
-    @GetMapping("/jpa")
+    @GetMapping("/all")
     public ResponseEntity<List<TestEntity>> getTest(){
         List<TestEntity> testList = testService.findAll();
         return new ResponseEntity<List<TestEntity>>(testList, HttpStatus.OK);
+        //ResponseEntity : HTTP응답을 빠르게 만들어 주기 위한 객체
+        //@ResponseBody 와 달리 Annotation이 아닌 객체로 사용이 된다.
+        //-> 응답으로 변환될 정보들을 모두 객체로만들어서 반환
+    }
+
+    @GetMapping("/one")
+    public ResponseEntity<List<TestEntity>> getFindTest() {
+        List<TestEntity> findList = testService.findByPw("0000");
+        return new ResponseEntity<List<TestEntity>>(findList, HttpStatus.OK);
     }
 }

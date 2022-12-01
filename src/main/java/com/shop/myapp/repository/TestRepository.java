@@ -9,6 +9,19 @@ import java.util.List;
 @Repository
 public interface TestRepository extends JpaRepository<TestEntity, String> {
 
+    //find(select), delete(delete), save(insert)
+
+    //select * from where pw = ?
     public List<TestEntity> findByPw(String pw);
+
+    //delete from "Table Name" where id = ?
+    public void deleteById(String id);
+
+    //insert into "DB Name" values();
+    TestEntity save(TestEntity testEntity);
+
+
+
+
 
 }
