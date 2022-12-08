@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface SampleService {
     List<SampleDTO> getSample();
+    //public SampleDTO getOneSample("id") throws Exception;
 }

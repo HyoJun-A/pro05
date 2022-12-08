@@ -20,4 +20,9 @@ public class SampleServiceImpl  implements SampleService {
     public List<SampleDTO> getSample() {
         return sampleMapper.getSample();
     }
+
+    /*@Override
+    public SampleDTO getOneSample() throws Exception {
+        return sampleMapper.getOneSample("id") ;
+    }*/
 }

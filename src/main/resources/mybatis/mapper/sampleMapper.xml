@@ -6,4 +6,8 @@
     <select id="getSample" resultType="com.shop.myapp.dto.SampleDTO">
         select * from test
     </select>
+
+    <select id="getOneSample" resultType="com.shop.myapp.dto.SampleDTO">
+        select * from test where id = #{id}
+    </select>
 </mapper>

@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface SampleRepository {
     List<SampleDTO> getSample();
+    //public SampleDTO getOneSample("id") throws Exception;
 }
