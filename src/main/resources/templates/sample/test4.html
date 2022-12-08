@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>thymeleaf 테스트2</title>
+</head>
+<body>
+    <h1>테스트 화면4</h1>
+    <ul th:object="${dto}">
+        <li th:text="*{id}"></li>
+        <li th:text="*{pw}"></li>
+    </ul>
+    <a th:href="@{/sample/test5}">test5 go</a>
+</body>
+</html>

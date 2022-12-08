@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>thymeleaf 테스트3</title>
+</head>
+<body>
+    <h1>테스트 화면</h1>
+    <table>
+        <thead>
+            <th>아이디</th>
+            <th>비밀번호</th>
+        </thead>
+        <tbody>
+            <tr th:each="sam : ${sampleList}">
+                <td><a th:href="@{/sample/test10(id=${sam.id})}" th:text="${sam.id}"></a></td>
+                <td th:text="${sam.pw}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
