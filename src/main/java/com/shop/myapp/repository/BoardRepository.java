@@ -10,4 +10,8 @@ import java.util.List;
 @Repository
 public interface BoardRepository {
     public List<BoardDTO> boardList() throws Exception;
+    public BoardDTO boardDetail(int bno) throws Exception;
+    public void visited(int bno) throws Exception;
+    public void boardAdd(String title, String content) throws Exception;
+    public void boardDel(int bno) throws Exception;
 }

@@ -3,8 +3,24 @@
         "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.shop.myapp.repository.BoardRepository">
-    <!-- 공지사항 리스트 -->
+    <!-- Board List -->
     <select id="boardList" resultType="com.shop.myapp.dto.BoardDTO">
         select * from board
+    </select>
+    <!-- Board Detail -->
+    <select id="boardDetail" resultType="com.shop.myapp.dto.BoardDTO">
+        select * from board where bno = #{bno}
+    </select>
+    <!-- visited up -->
+    <select id="visited" resultType="com.shop.myapp.dto.BoardDTO">
+        update board set visited = visited + 1 where bno = #{bno};
+    </select>
+    <!-- Board insert -->
+    <select id="boardAdd" resultType="com.shop.myapp.dto.BoardDTO">
+        insert into board(title, content) values(#{title}, #{content});
+    </select>
+    <!-- Board Delete -->
+    <select id="boardDel" resultType="com.shop.myapp.dto.BoardDTO">
+        delete from board where bno = #{bno}
     </select>
 </mapper>

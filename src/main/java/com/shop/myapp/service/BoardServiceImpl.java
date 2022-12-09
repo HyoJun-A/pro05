@@ -18,4 +18,24 @@ public class BoardServiceImpl implements BoardService{
     public List<BoardDTO> boardList() throws Exception {
         return boardMapper.boardList();
     }
+
+    @Override
+    public BoardDTO boardDetail(int bno) throws Exception {
+        return boardMapper.boardDetail(bno);
+    }
+
+    @Override
+    public void visited(int bno) throws Exception {
+        boardMapper.visited(bno);
+    }
+
+    @Override
+    public void boardAdd(String title, String content) throws Exception {
+        boardMapper.boardAdd(title, content);
+    }
+
+    @Override
+    public void boardDel(int bno) throws Exception {
+        boardMapper.boardDel(bno);
+    }
 }

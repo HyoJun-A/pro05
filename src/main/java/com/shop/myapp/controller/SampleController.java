@@ -81,7 +81,7 @@ public class SampleController {
         return "/sample/test9";
     }
 
-    /*@GetMapping("test10")
+   /* @GetMapping("test10")
     public String test10(RequestParam("id") String id, Model model) throws Exception{
         SampleDTO dto = sampleService.getOneSample("id");
         model.addAttribute("dto", dto);
