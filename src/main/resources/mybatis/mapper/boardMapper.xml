@@ -13,14 +13,18 @@
     </select>
     <!-- visited up -->
     <select id="visited" resultType="com.shop.myapp.dto.BoardDTO">
-        update board set visited = visited + 1 where bno = #{bno};
+        update board set visited = visited + 1 where bno = #{bno}
     </select>
     <!-- Board insert -->
     <select id="boardAdd" resultType="com.shop.myapp.dto.BoardDTO">
-        insert into board(title, content) values(#{title}, #{content});
+        insert into board(title, content) values(#{title}, #{content})
     </select>
     <!-- Board Delete -->
     <select id="boardDel" resultType="com.shop.myapp.dto.BoardDTO">
         delete from board where bno = #{bno}
+    </select>
+    <!-- Board Edit -->
+    <select id="boardEdit" resultType="com.shop.myapp.dto.BoardDTO">
+        update board set title = #{title}, content = #{content} where bno = #{bno}
     </select>
 </mapper>

@@ -59,10 +59,12 @@ public class BoardController {
         return "board/boardList";
     }
 
-    @GetMapping("editForm")
+    @GetMapping("editForm.do")
     public String boardEditForm(@RequestParam("bno") int bno, Model model) throws Exception {
         BoardDTO dto = boardService.boardDetail(bno);
         model.addAttribute("dto", dto);
         return "board/boardEdit";
     }
+
+//    @GetMapping("edit.do")
 }

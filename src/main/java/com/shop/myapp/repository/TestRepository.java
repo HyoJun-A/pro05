@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
+@SuppressWarnings("unchecked")
 public interface TestRepository extends JpaRepository<TestEntity, String> {
 
     //find(select), delete(delete), save(insert)
