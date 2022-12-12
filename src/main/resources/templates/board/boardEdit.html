@@ -18,14 +18,14 @@
                <tr>
                    <th><label class="title2">제목</label></th>
                    <td>
-                       <input type="text" class="input" name="title2" id="title" th:value="${dto.title}">
                        <input type="hidden" name="bno" id="bno" th:value="${dto.bno}">
+                       <input type="text" class="input" name="title" id="title" th:value="${dto.title}">
                    </td>
                </tr>
                <tr>
                    <th><label class="content">내용</label></th>
                    <td>
-                       <input rows="8" cols="100" name="content" id="content" class="textarea" th:value="${dto.content}" required>
+                       <textarea rows="8" cols="100" name="content" id="content" class="textarea" th:text="${dto.content}" required></textarea>
                    </td>
 
                </tr>

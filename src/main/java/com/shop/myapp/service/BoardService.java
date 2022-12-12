@@ -10,4 +10,5 @@ public interface BoardService {
     public void visited(int bno) throws Exception;
     public void boardAdd(String title, String content) throws Exception;
     public void boardDel(int bno) throws Exception;
+    public void boardEdit(String title, String content, int bno) throws Exception;
 }

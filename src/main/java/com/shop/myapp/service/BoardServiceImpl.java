@@ -38,4 +38,9 @@ public class BoardServiceImpl implements BoardService{
     public void boardDel(int bno) throws Exception {
         boardMapper.boardDel(bno);
     }
+
+    @Override
+    public void boardEdit(String title, String content, int bno) throws Exception {
+        boardMapper.boardEdit(title, content, bno);
+    }
 }

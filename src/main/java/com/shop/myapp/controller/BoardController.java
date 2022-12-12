@@ -66,5 +66,12 @@ public class BoardController {
         return "board/boardEdit";
     }
 
-//    @GetMapping("edit.do")
+    @PostMapping("edit.do")
+    public String boardEdit(@RequestParam("title") String title, @RequestParam("content") String content, @RequestParam("bno") int bno, Model model) throws Exception {
+        boardService.boardEdit(title, content, bno);
+
+        List<BoardDTO> boardList = boardService.boardList();
+        model.addAttribute("list", boardList);
+        return "board/boardList";
+    }
 }
