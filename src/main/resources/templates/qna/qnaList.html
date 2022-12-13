@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>질문 및 답변</title>
+    <th:block th:include="fragments/common/head"></th:block>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.13.1/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.13.1/datatables.min.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <!-- navbar -->
+    <th:block th:include="fragments/common/navbar"></th:block>
+    <!-- content -->
+    <div class="content">
+        <h2>질문 및 답변 목록</h2>
+        <table id="tb" class="table is-striped">
+            <thead>
+            <tr>
+                <th>연번</th>
+                <th>제목</th>
+                <th>내용</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr  th:each="list, status : ${list}">
+                <th:block th:if="${list.lev} == 0">
+                    <td th:text="${status.index}"></td>
+                </th:block>
+                <th:block th:unless="${list.lev} == 0">
+                    <td></td>
+                </th:block>
+                <td><a th:text="${list.title}"></a></td>
+                <td th:text="${list.content}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="buttons">
+            <a th:href="@{/qna/addForm.do}" class="button is-primary">글 등록</a>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("#tb").DataTable();
+            });
+        </script>
+    </div>
+    <!-- footer -->
+    <th:block th:include="fragments/common/footer"></th:block>
+
+    <th:block th:include="fragments/common/script"></th:block>
+</div>
+</body>
+</html>

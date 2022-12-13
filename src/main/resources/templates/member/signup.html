@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>page</title>
+    <th:block th:include="fragments/common/head"></th:block>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+    <!-- navbar -->
+    <th:block th:include="fragments/common/navbar"></th:block>
+
+    <!-- sidebar -->
+    <th:block th:include="fragments/common/sidebar"></th:block>
+
+    <!-- main -->
+    <div class="content content-wrapper">
+        <form method="post" th:action="@{/member/signUp.do}">
+            <div class="field">
+                <label class="label">아이디</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Text input" name="id" id="id">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">비밀번호</label>
+                <div class="control">
+                    <input class="input" type="password" placeholder="Text input" name="pw" id="pw">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">비밀번호 확인</label>
+                <div class="control">
+                    <input class="input" type="password" placeholder="Text input" name="pw" id="pw">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">이메일</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Text input" name="email" id="email">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">전화번호</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Text input" name="tel" id="tel">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">주소</label>
+                <div class="control">
+                    <input class="input" type="text" name="addr1" id="addr1" placeholder="기본주소 입력" maxlength="150" required><br><br>
+                    <input class="input" type="text" name="addr2" id="addr2" placeholder="상세주소 입력" maxlength="90" required><br><br>
+                    <input class="input" type="text" name="postcode" id="postcode" placeholder="우편번호 입력" maxlength="9" required>
+                    <input type="button" id="isAddrBtn" class="button" value="주소 입력" onclick="findAddr()">
+                    <input type="hidden" name="addrck" id="addrck" value="no"/>
+                </div>
+            </div>
+            <div class="buttons">
+                <button type="submit" class="button is-primary is-light">가입</button>
+                <button type="reset" class="button is-link is-light">취소</button>
+            </div>
+            <script>
+				function findAddr() {
+					new daum.Postcode({
+						oncomplete: function(data) {
+							console.log(data);
+							var roadAddr = data.roadAddress;
+							var jibunAddr = data.jibunAddress;
+							document.getElementById("postcode").value = data.zonecode;
+							if(roadAddr !== '') {
+								document.getElementById("addr1").value = roadAddr;
+							} else if(jibunAddr !== ''){
+								document.getElementById("addr1").value = jibunAddr;
+							}
+							document.getElementById("addr2").focus();
+						}
+					}).open();
+				}
+				</script>
+            <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+        </form>
+    </div>
+
+    <!-- footer -->
+    <th:block th:include="fragments/common/footer"></th:block>
+
+    <th:block th:include="fragments/common/script"></th:block>
+</div>
+</body>
+</html>
