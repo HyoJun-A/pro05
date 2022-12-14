@@ -8,7 +8,23 @@
         select * from qna
     </select>
 
+    <!-- Qna insert -->
     <select id="qnaAdd" resultType="com.shop.myapp.dto.QnaDTO">
-        insert into qna(author, title, content, lev, parno) values(#{author}, #{title}, #{content}, 0, (select max(qno)+1 from qna where lev = 0))
+        insert into qna(author, title, content, lev, parno) values(#{author}, #{title}, #{content}, 0, (select a.qno+1 from(select max(qno) qno from qna where lev=0)a))
+    </select>
+
+    <!-- Qna Detail -->
+    <select id="qnaDetail" resultType="com.shop.myapp.dto.QnaDTO">
+        select * from qna where qno = #{qno}
+    </select>
+
+    <!-- Qna delete -->
+    <select id="qnaDel" resultType="com.shop.myapp.dto.QnaDTO">
+        delete from qna where qno = #{qno}
+    </select>
+
+    <!-- Qna Edit -->
+    <select id="qnaEdit" resultType="com.shop.myapp.dto.QnaDTO">
+        update qna set title = #{title}, content = #{content}, modified_date = now() where qno = #{qno}
     </select>
 </mapper>

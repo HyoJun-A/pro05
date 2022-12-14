@@ -26,12 +26,12 @@
             <tbody>
             <tr  th:each="list, status : ${list}">
                 <th:block th:if="${list.lev} == 0">
-                    <td th:text="${status.index}"></td>
+                    <td th:text="${list.parno}"></td>
                 </th:block>
                 <th:block th:unless="${list.lev} == 0">
                     <td></td>
                 </th:block>
-                <td><a th:text="${list.title}"></a></td>
+                <td><a th:href="@{/qna/detail.do(qno=${list.qno})}" th:text="${list.title}"></a></td>
                 <td th:text="${list.content}"></td>
             </tr>
             </tbody>

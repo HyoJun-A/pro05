@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -33,11 +34,39 @@ public class QnaController {
     }
 
     @PostMapping("add.do")
-    public String qnaAdd(QnaDTO qnaDTO, Model model) throws Exception {
-        qnaService.qnaAdd(qnaDTO);
+    public String qnaAdd(@RequestParam("author") String author, @RequestParam("title") String title, @RequestParam("content") String content, Model model) throws Exception {
+        qnaService.qnaAdd(author, title, content);
 
         List<QnaDTO> qnaList = qnaService.qnaList();
         model.addAttribute("list", qnaList);
         return "qna/qnaList";
+    }
+
+    @GetMapping("detail.do")
+    public String qnaDetail(@RequestParam("qno") int qno, Model model) throws Exception {
+        QnaDTO dto = qnaService.qnaDetail(qno);
+        model.addAttribute("dto", dto);
+        return "qna/qnaDetail";
+    }
+
+    @GetMapping("del.do")
+    public String qnaDel(@RequestParam("qno") int qno, Model model) throws Exception{
+        qnaService.qnaDel(qno);
+
+        List<QnaDTO> qnaList = qnaService.qnaList();
+        model.addAttribute("list", qnaList);
+        return "qna/qnaList";
+    }
+
+    @GetMapping("editForm.do")
+    public String editForm(@RequestParam("qno") int qno, Model model) throws Exception {
+        QnaDTO dto = qnaService.qnaDetail(qno);
+        model.addAttribute("dto", dto);
+        return "qna/qnaEdit";
+    }
+
+    @GetMapping("edit.do")
+    public String qnaEdit(@RequestParam("qno") int qno, @RequestParam("title") String title, @RequestParam("content") String content, Model model) {
+        reutrn "qna"
     }
 }

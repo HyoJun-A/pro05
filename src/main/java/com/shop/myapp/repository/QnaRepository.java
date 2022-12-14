@@ -11,5 +11,11 @@ import java.util.List;
 public interface QnaRepository {
     public List<QnaDTO> qnaList() throws Exception;
 
-    public QnaDTO qnaAdd(QnaDTO qnaDTO) throws Exception;
+    public QnaDTO qnaAdd(String author, String title, String content) throws Exception;
+
+    public QnaDTO qnaDetail(int qno) throws Exception;
+
+    public void qnaDel(int qno) throws Exception;
+
+    public void qnaEdit(int qno, String title, String content) throws Exception;
 }

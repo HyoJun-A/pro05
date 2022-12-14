@@ -18,7 +18,22 @@ public class QnaServiceImpl implements QnaService{
     }
 
     @Override
-    public QnaDTO qnaAdd(QnaDTO qnaDTO) throws Exception {
-        return qnaMapper.qnaAdd(qnaDTO);
+    public QnaDTO qnaAdd(String author, String title, String content) throws Exception {
+        return qnaMapper.qnaAdd(author, title, content);
+    }
+
+    @Override
+    public QnaDTO qnaDetail(int qno) throws Exception {
+        return qnaMapper.qnaDetail(qno);
+    }
+
+    @Override
+    public void qnaDel(int qno) throws Exception {
+        qnaMapper.qnaDel(qno);
+    }
+
+    @Override
+    public void qnaEdit(int qno, String title, String content) throws Exception {
+        qnaMapper.qnaEdit(qno, title, content);
     }
 }

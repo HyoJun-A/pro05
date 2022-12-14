@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8">
+  <title>질문 상세보기</title>
+  <th:block th:include="fragments/common/head"></th:block>
+</head>
+<body>
+<div class="wrapper">
+  <!-- navbar -->
+  <th:block th:include="fragments/common/navbar"></th:block>
+  <!-- content -->
+  <div class="content">
+      <h2>질문 상세보기</h2>
+      <table class="table is-striped">
+          <tbody th:object="${dto}">
+            <tr>
+              <th>글번호</th>
+              <td th:text="${dto.qno}"></td>
+            </tr>
+            <tr>
+              <th>작성자</th>
+              <td th:text="${dto.author}"></td>
+            </tr>
+            <tr>
+              <th>제목</th>
+              <td th:text="${dto.title}"></td>
+            </tr>
+            <tr>
+              <th>내용</th>
+              <td th:text="${dto.content}"></td>
+            </tr>
+            <tr>
+              <th>작성일</th>
+              <td th:text="${dto.createDate}"></td>
+            </tr>
+            <tr>
+              <th>수정일</th>
+              <td th:text="${dto.modifiedDate}"></td>
+            </tr>
+          </tbody>
+      </table>
+
+    <div class="buttons">
+      <a th:href="@{/qna/list.do}" class="button is-success">목록</a>
+      <a th:href="@{/qna/editForm.do(qno=${dto.qno})}" class="button is-success">수정</a>
+      <a th:href="@{/qna/answerForm.do(qno=${dto.qno})}" class="button is-success">답변</a>
+      <a th:href="@{/qna/del.do(qno=${dto.qno})}" class="button is-success">삭제</a>
+    </div>
+  </div>
+
+<!-- footer -->
+<th:block th:include="fragments/common/footer"></th:block>
+
+<th:block th:include="fragments/common/script"></th:block>
+</div>
+</body>
+</html>
