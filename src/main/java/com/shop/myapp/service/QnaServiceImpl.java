@@ -36,4 +36,9 @@ public class QnaServiceImpl implements QnaService{
     public void qnaEdit(int qno, String title, String content) throws Exception {
         qnaMapper.qnaEdit(qno, title, content);
     }
+
+    @Override
+    public QnaDTO qnaAnswer(String author, String title, String content, int qno) throws Exception {
+        return qnaMapper.qnaAnswer(author, title, content, qno);
+    }
 }

@@ -65,8 +65,27 @@ public class QnaController {
         return "qna/qnaEdit";
     }
 
-    @GetMapping("edit.do")
-    public String qnaEdit(@RequestParam("qno") int qno, @RequestParam("title") String title, @RequestParam("content") String content, Model model) {
-        reutrn "qna"
+    @PostMapping("edit.do")
+    public String qnaEdit(@RequestParam("qno") int qno, @RequestParam("title") String title, @RequestParam("content") String content, Model model) throws Exception {
+        qnaService.qnaEdit(qno, title, content);
+
+        List<QnaDTO> qnaList = qnaService.qnaList();
+        model.addAttribute("list", qnaList);
+        return "qna/qnaList";
+    }
+
+    @GetMapping("answerForm.do")
+    public String answerForm(@RequestParam("qno") int qno, Model model) throws Exception {
+        model.addAttribute("qno", qno);
+        return "qna/qnaAnswer";
+    }
+
+    @PostMapping("answer.do")
+    public String qnaAnswer(@RequestParam("author") String author, @RequestParam("title") String title, @RequestParam("content") String content, @RequestParam("qno") int qno, Model model) throws Exception {
+        qnaService.qnaAnswer(author, title, content, qno);
+
+        List<QnaDTO> qnaList = qnaService.qnaList();
+        model.addAttribute("list", qnaList);
+        return "qna/qnaList";
     }
 }

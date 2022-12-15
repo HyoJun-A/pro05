@@ -27,4 +27,9 @@
     <select id="qnaEdit" resultType="com.shop.myapp.dto.QnaDTO">
         update qna set title = #{title}, content = #{content}, modified_date = now() where qno = #{qno}
     </select>
+
+    <!-- Qna insert -->
+    <select id="qnaAnswer" resultType="com.shop.myapp.dto.QnaDTO">
+        insert into qna(author, title, content, lev, parno) values(#{author}, #{title}, #{content}, 1, #{qno})
+    </select>
 </mapper>
